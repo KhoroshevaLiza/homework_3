@@ -1,0 +1,12 @@
+//ассоциативный массив с цветами
+
+$colors: (
+    'black': #000,
+    'white': #fff
+);
+
+//воссоздавать цвет по ключу
+
+@function color($color) {
+    @return map-get($colors, $color);
+}

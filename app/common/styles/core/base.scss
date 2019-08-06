@@ -1,0 +1,17 @@
+// стили для корневого узла html
+
+html {
+    min-height: 100%;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+// свойства для контейнера
+.container {
+    width: 100%;
+    max-width: 1300px;
+}

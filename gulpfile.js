@@ -26,9 +26,6 @@ const webpackConfig = require("./webpack.config.js"); // импортируем 
 // images
 const imagemin = require("gulp-imagemin");
 
-// copy
-const copy = require("gulp-copy");
-
 // server
 const browserSync = require("browser-sync").create(); // импортируем и сразу вызываем метод create()
 
@@ -41,9 +38,7 @@ gulp.task("clear", () => del(PATHS.dist));
 
 gulp.task("templates", () => {
     return gulp
-        .src(`${PATHS.app}/pages/**/*.pug`, { //.src() - получаем источник
-            since: gulp.lastRun("templates") 
-        })
+        .src(`${PATHS.app}/pages/**/*.pug`) //.src() - получаем источник
         .pipe(plumber()) // отслеживание ошибок
         .pipe(pug({ pretty: true })) // запрет сжатия HTML
         .pipe(gulp.dest(PATHS.dist)); // выходные файлы в папке 
@@ -51,7 +46,7 @@ gulp.task("templates", () => {
 
 gulp.task("styles", () => {
     return gulp
-        .src(`${PATHS.app}/common/styles/**/*.scss`, { //
+        .src(`${PATHS.app}/common/styles/app.scss`, { //
             since: gulp.lastRun("styles")
         })
         .pipe(plumber()) //
@@ -83,7 +78,6 @@ gulp.task("images", () => {
         .pipe(gulp.dest(`${PATHS.dist}/assets/images`)); //
 });
 
-// copy
 gulp.task("copy", () => {
     return gulp
         .src (`${PATHS.app}/common/fonts/**/*`)
@@ -110,7 +104,7 @@ gulp.task("watch", () => {
 
 gulp.task("default",
     gulp.series(
-        gulp.parallel("templates", "styles", "scripts", "images"),
+        gulp.parallel("templates", "styles", "scripts", "images","copy"),
         gulp.parallel("watch", "server")
     )
 );
