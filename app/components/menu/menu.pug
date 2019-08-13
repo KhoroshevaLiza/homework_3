@@ -1,0 +1,12 @@
+mixin menu(arr)
+    nav.menu
+        ul.menu__list
+            if arr
+                each item in arr
+                    li.menu__item
+                        a.menu__link.link(href=item.url)= item.title
+                        if item.submenu
+                            ul.menu__sub-list
+                                each subItem in item.submenu
+                                    li.menu__sub-item
+                                        a.menu__sub-link.link(href=subItem.url)= subItem.title

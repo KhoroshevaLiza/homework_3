@@ -1,6 +1,35 @@
 //- Используем стандартный шаблон
 extends ../layouts/default/default
 
+include ../components/breadcrumbs/breadcrumbs
+include ../components/page-title/page-title
+include ../components/item-card/item-card
+
 //- Выводим контент
 block content
-    | Index content
+    .container
+        .mt-xl-12.mb-xl-3
+            -
+                var breadcrumbs = [
+                    {url: '#', title: 'Главная', value: 'Главная'},
+                    {url: '#', title: 'Каталог', value: 'Каталог'},
+                    {url: '#', title: 'Мягкая мебель', value: 'Мягкая мебель'},
+                    {value: 'Диваны'}
+                ]
+            +breadcrumbs(breadcrumbs)
+        +page-title('Диваны')
+        .mt-xl-16
+            .row
+                .col-xl-5 left
+                .col-xl-18.offset-xl-1
+                        //- .container
+                        -
+                            var item = [
+                                {name: 'Montreal', cost: '10 990 руб.', img: 'assets/images/item-01.jpg', btns: ['favourites', 'cart']},
+                                {name: 'Glasgow', cost: '19 990 руб.', img: 'assets/images/item-06.jpg', btns: ['favourites', 'cart']},
+                                {name: 'Munich', cost: '24 990 руб.', img: 'assets/images/item-01.jpg', btns: ['favourites', 'cart']},
+                                {name: 'Alexandria', cost: '109 990 руб.', img: 'assets/images/item-05.jpg', btns: ['favourites', 'cart']},
+                                {name: 'Karachi', cost: '17 990 руб.', img: 'assets/images/item-02.jpg', btns: ['favourites', 'cart']},
+                                {name: 'Phoenix', cost: '29 990 руб.', img: 'assets/images/item-03.jpg', btns: ['favourites', 'cart']}
+                            ]
+                        +item-card(item)

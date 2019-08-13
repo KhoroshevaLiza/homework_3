@@ -1,0 +1,65 @@
+.item-card{
+	display: flex; //горизонтальное выранивание
+	flex-direction: column; //вертикальное выравнивание
+	justify-content: center; //выравнивание по главной оси
+  	//justify-content: space-between; //распределены вдоль главной оси, первый элемент прижат к началу оси, а последний - к концу
+  	//align-items: flex-start; //элементы выравниваются от начала перпендикулярной оси
+
+
+	&__list {	
+		display: flex;
+		flex-direction: row; //выранивание в линию
+  		flex-wrap: wrap; //перебрасывает товары на новую строку, если на текущей уже недостаточно места из-за ширины окна браузера
+		flex-basis: 20%;
+	}
+
+	&__item {
+		//position: relative; //отсчет координат ведется от края родительского элемента
+		padding-bottom: 20px;
+		//z-index: -1;
+	}
+
+	&__item:not(:nth-child(3n)) {
+		margin-right: 20px;
+	}
+
+	&__item:hover {
+		box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+	}
+	
+	&__img {
+		width: 270px;
+		height: 270px;
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-top: 20px;
+		margin-bottom: 10px;
+  		object-fit: contain;//Содержимое масштабируется, выравниваясь по центру с сохранением пропорций, чтобы полностью поместиться внутри контейнера
+	}
+
+	&__name {
+		width: 270px;
+  		height: 22px;
+  		//font-weight: normal; //Насыщенность шрифта
+  		//font-style: normal; //стиль начертания для шрифта
+  		//font-stretch: normal; //узкое, нормальное или широкое начертание шрифта
+  		line-height: 1.38; //Размер строки
+  		//letter-spacing: normal; //определяет дополнительный интервал
+		margin-bottom: 20px;
+		margin-left: 20px;
+	}
+
+	&__cost {
+		width: 100px;
+  		height: 24px;
+  		font-weight: bold;
+  		line-height: 1.5;
+		float:left;
+		margin-left: 20px;
+	}
+
+	&__btns {
+		float:right;
+		margin-right: 20px;
+	}
+}

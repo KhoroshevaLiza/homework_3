@@ -29,6 +29,10 @@ const imagemin = require("gulp-imagemin");
 // server
 const browserSync = require("browser-sync").create(); // импортируем и сразу вызываем метод create()
 
+//svg-sprite
+const svgSprite = require("gulp-svg-sprite");
+const svgmin = require("gulp-svgmin");
+
 const PATHS = {
     app: "./app",
 	dist: "./dist"
@@ -46,9 +50,7 @@ gulp.task("templates", () => {
 
 gulp.task("styles", () => {
     return gulp
-        .src(`${PATHS.app}/common/styles/app.scss`, { //
-            since: gulp.lastRun("styles")
-        })
+        .src(`${PATHS.app}/common/styles/app.scss`)//
         .pipe(plumber()) //
         .pipe(gulpIf(!isProduction, sourcemaps.init())) // если isProduction false то выполняем 
         .pipe(sass())
@@ -70,9 +72,7 @@ gulp.task("scripts", () => {
 
 gulp.task("images", () => {
     return gulp
-        .src(`${PATHS.app}/common/images/**/*.+(png|jpg|jpeg|gif|svg|ico)`, { //
-            since: gulp.lastRun("images")
-        })
+        .src(`${PATHS.app}/common/images/**/*.+(png|jpg|jpeg|gif|svg|ico)`)
         .pipe(plumber()) //
         .pipe(gulpIf(isProduction, imagemin())) // если запускаем в production режиме (т.е. переменная isProduction true), то запустится минификация изображений imagemin(). В противном случае, если запустили сборку в режиме разработки, то минификация изображений нам не нужна
         .pipe(gulp.dest(`${PATHS.dist}/assets/images`)); //
@@ -84,6 +84,35 @@ gulp.task("copy", () => {
         .pipe(plumber())
         .pipe(gulp.dest(`${PATHS.dist}/assets/fonts`));
 });
+
+
+gulp.task("icons", () => {
+	return gulp
+		.src(`${PATHS.app}/common/icons/**/*.svg`)
+        .pipe(plumber())
+		.pipe(svgmin({ // убирает лишнее в svg файле (svgo)
+			js2svg: {
+				pretty: true
+			}
+		}))
+		.pipe( // из всех иконок формируем один общий файл
+			svgSprite({
+				mode: {
+					symbol: {
+						sprite: "../dist/assets/images/icons/sprite.svg", // сюда отправляем получившийся спрайт
+						render: {
+							scss: {
+								dest:'../app/common/styles/helpers/sprites.scss', 
+								template: './app/common/styles/helpers/sprite-template.scss'
+							}
+						}
+					}
+				}
+			})
+		)
+		.pipe(gulp.dest('./'));
+});
+
 
 gulp.task("server", () => {
     browserSync.init({
@@ -103,7 +132,7 @@ gulp.task("watch", () => {
 });
 
 gulp.task("default",
-    gulp.series(
+    gulp.series("icons",
         gulp.parallel("templates", "styles", "scripts", "images","copy"),
         gulp.parallel("watch", "server")
     )
@@ -111,6 +140,6 @@ gulp.task("default",
 
 gulp.task("production",
     gulp.series("clear",
-        gulp.parallel("templates", "styles", "scripts", "images")
+        gulp.parallel("templates", "icons", "styles", "scripts", "images")
     )
 );

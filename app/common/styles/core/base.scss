@@ -1,5 +1,8 @@
-// стили для корневого узла html
+* {
+    box-sizing: border-box;
+}
 
+// стили для корневого узла html
 html {
     min-height: 100%;
     box-sizing: border-box;
@@ -9,9 +12,34 @@ html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+body{
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    font-weight: normal;
+    -webkit-appearance: none;
+    box-shadow: none;
+
+    &::-ms-clear {
+        display: none;
+    }
+}
+
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
 // свойства для контейнера
-.container {
-    width: 100%;
-    max-width: 1300px;
-}
+// .container {
+//     width: 100%;
+//     max-width: 1340px;
+//     padding: 0 20px;
+//     margin: 0 auto;
+// }

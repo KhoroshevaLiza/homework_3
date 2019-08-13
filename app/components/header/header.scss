@@ -1,0 +1,25 @@
+.header {
+    &__top,
+    &__bottom {
+        border-bottom: 1px solid color('gray-light');
+    }
+
+    &__top {
+        padding: 50px 0;
+    }
+
+    &__bottom {
+        padding: 20px 0 5px;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: space-between;
+    }
+}

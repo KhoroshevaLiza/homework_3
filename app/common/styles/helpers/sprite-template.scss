@@ -1,0 +1,11 @@
+//шаблон для автоматической генерации стилей для каждой svg иконки
+.icon {
+    display: inline-block;
+  }
+  
+{{#shapes}}
+.icon-{{base}} {
+    width: {{width.inner}}px;
+    height: {{height.inner}}px;
+}
+{{/shapes}}
