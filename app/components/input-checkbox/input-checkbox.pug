@@ -1,0 +1,8 @@
+mixin input-checkbox(arr)
+    ul.input-checkbox__list
+        if arr
+            each item in arr
+                li.input-checkbox__item
+                    label.input-checkbox
+                        input.input-checkbox__input(type='checkbox' name=item.name)
+                        span.input-checkbox__label= item.label

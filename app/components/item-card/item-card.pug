@@ -1,11 +1,13 @@
+include ../icon-btn/icon-btn
+
 mixin item-card(arr)
     .item-card
-        ul.item-card__list
-            if arr
-                each item in arr
-                    li.item-card__item
-                        .item-card__img= item.img
-                        .item-card__name= item.name
-                        .item-card__cost= item.cost
-                        .item-card__btns= item.btns
-                        
+        a.item-card__link(href=arr.href title=arr.name)
+            img.item-card__img(src=arr.img, alt="")
+            span.item-card__name= arr.name
+        .item-card__wrap
+            .item-card__cost!= arr.cost
+                | &nbsp;руб.
+            .item-card__btns
+                each btn in arr.btns
+                    +icon-btn(btn)

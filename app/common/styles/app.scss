@@ -6,7 +6,7 @@
 @import "variables/measures";
 @import "variables/typography";
 @import "variables/grid";
-//@import "variables/animation";
+@import "variables/animation";
 
 //helpers
 @import "helpers/sprites";
@@ -26,8 +26,13 @@
 @import "../../components/logo/logo";
 @import "../../components/search/search";
 @import "../../components/icon-btn/icon-btn";
-//@import "../../components/input-text/input-text";
+@import "../../components/input-text/input-text";
 @import "../../components/menu/menu";
 @import "../../components/breadcrumbs/breadcrumbs";
 @import "../../components/page-title/page-title";
+@import "../../components/list-card/list-card";
 @import "../../components/item-card/item-card";
+@import "../../components/input-checkbox/input-checkbox";
+@import "../../components/btn/btn";
+@import "../../components/footer/footer";
+@import "../../components/item-color/item-color";

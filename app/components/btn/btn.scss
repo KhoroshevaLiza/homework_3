@@ -1,0 +1,35 @@
+.btn {
+    display: inline-block;
+    height: 50px;
+    //padding: 0 85px;
+    margin: 0;
+    border: 0;
+    line-height: 50px;
+    background-color: transparent;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: $font-family-base;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color $animation-time;
+    
+    &_primary {
+        color: color("white");
+        background-color: color("blue");
+        padding: 0 85px;
+        font-weight: bold;
+
+        &:hover {
+            background-color: color("blue-dark");
+        }
+    }
+
+    &_reset {
+        padding: 0 67px;
+    }
+
+    &_block {
+        width: 100%;
+    }
+}

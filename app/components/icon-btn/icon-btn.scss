@@ -7,11 +7,29 @@
     background-color: transparent;
     cursor: pointer;
 
+    &_only-icon {
+        .icon-btn {
+            &__icon {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &:hover {
+        .icon-btn__icon {
+            > .icon {
+                fill: color("blue-dark");
+            }
+        }
+    }
+
     &__icon {
         margin-right: 8px;
 
         > .icon {
             display: block;
+            fill: color("blue");
+            transition: fill $animation-time;
         }
     }
 

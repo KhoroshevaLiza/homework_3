@@ -3,7 +3,9 @@ extends ../layouts/default/default
 
 include ../components/breadcrumbs/breadcrumbs
 include ../components/page-title/page-title
-include ../components/item-card/item-card
+include ../components/list-card/list-card
+include ../components/input-checkbox/input-checkbox
+include ../components/item-color/item-color
 
 //- Выводим контент
 block content
@@ -18,18 +20,59 @@ block content
                 ]
             +breadcrumbs(breadcrumbs)
         +page-title('Диваны')
-        .mt-xl-16
+        .mt-xl-12
             .row
-                .col-xl-5 left
+                .col-xl-5.pt-xl-
+                    -
+                        var color = [
+                            {url: '#', title: 'Белый', color: '#ffffff'},
+                            {url: '#', title: 'Черный', color: '#000000'},
+                            {url: '#', title: 'Серый', color: "#5a5a5a"},
+                            {url: '#', title: 'Коричневый', color: "#704d35"},
+                            {url: '#', title: 'Оранжевый', color: "#e0791d"},
+                            {url: '#', title: 'Красный', color: "#ba0606"},
+                            {url: '#', title: 'Зеленый', color: "#38a01a"},
+                            {url: '#', title: 'Темно-синий', color: "#314976"},
+                            {url: '#', title: 'Светло-синий', color: "#3748a6"},
+                        ]
+                    +item-color(color)
+                    br
+                    p(style="font-weight: bold") Материал
+                    -
+                        var material = [
+                            {name: 'test1', label: 'Вельвет'},
+                            {name: 'test2', label: 'Микровелюр'},
+                            {name: 'test3', label: 'Велюр'},
+                            {name: 'test4', label: 'Жаккард'},
+                            {name: 'test5', label: 'Замша'},
+                            {name: 'test6', label: 'Рогожка'}
+                        ]
+                    +input-checkbox(material)
+                    br
+                    p(style="font-weight: bold") Угол
+                    -
+                        var angle = [
+                            {name: 'test7', label: 'Левый'},
+                            {name: 'test8', label: 'Правый'},
+                            {name: 'test9', label: 'Универсальный'}
+                        ]
+                    +input-checkbox(angle)
+                    //- br
+                    //- button.btn.btn_primary Button
+                    br
+                    input.btn.btn_primary(type='submit' value='Применить')
+                    br
+                    input.btn.btn_reset(type='reset' value='Очистить фильтр')
+                    //- br
+                    //- a.btn.btn_primary(href="#") Button_A
                 .col-xl-18.offset-xl-1
-                        //- .container
                         -
-                            var item = [
-                                {name: 'Montreal', cost: '10 990 руб.', img: 'assets/images/item-01.jpg', btns: ['favourites', 'cart']},
-                                {name: 'Glasgow', cost: '19 990 руб.', img: 'assets/images/item-06.jpg', btns: ['favourites', 'cart']},
-                                {name: 'Munich', cost: '24 990 руб.', img: 'assets/images/item-01.jpg', btns: ['favourites', 'cart']},
-                                {name: 'Alexandria', cost: '109 990 руб.', img: 'assets/images/item-05.jpg', btns: ['favourites', 'cart']},
-                                {name: 'Karachi', cost: '17 990 руб.', img: 'assets/images/item-02.jpg', btns: ['favourites', 'cart']},
-                                {name: 'Phoenix', cost: '29 990 руб.', img: 'assets/images/item-03.jpg', btns: ['favourites', 'cart']}
+                            var cards = [
+                                {href: '#', name: 'Montreal', cost: '10&nbsp;990', img: 'assets/images/item-01.jpg', btns: ['favourites', 'cart']},
+                                {href: '#', name: 'Glasgow', cost: '19&nbsp;990', img: 'assets/images/item-06.jpg', btns: ['favourites', 'cart']},
+                                {href: '#', name: 'Munich', cost: '24&nbsp;990', img: 'assets/images/item-01.jpg', btns: ['favourites', 'cart']},
+                                {href: '#', name: 'Alexandria', cost: '109&nbsp;990', img: 'assets/images/item-05.jpg', btns: ['favourites', 'cart']},
+                                {href: '#', name: 'Karachi', cost: '17&nbsp;990', img: 'assets/images/item-02.jpg', btns: ['favourites', 'cart']},
+                                {href: '#', name: 'Phoenix', cost: '29&nbsp;990', img: 'assets/images/item-03.jpg', btns: ['favourites', 'cart']}
                             ]
-                        +item-card(item)
+                        +list-card(cards)

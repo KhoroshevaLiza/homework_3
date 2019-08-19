@@ -1,5 +1,6 @@
 mixin icon-btn(src, count)
-    button.icon-btn
+    button.icon-btn(class=count ? '' : 'icon-btn_only-icon')
         span.icon-btn__icon
-            +icon(icon)
-        span.icon-btn__count= count
+            +icon(src)
+        if count
+            span.icon-btn__count= count
