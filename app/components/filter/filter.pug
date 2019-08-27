@@ -1,0 +1,17 @@
+include ../input-checkbox/input-checkbox
+include ../item-color/item-color
+
+mixin filter(params)
+    .filter(class=attributes.class ? 'filter_' + attributes.class : '')
+        .filter__title= params.title
+            .filter__title-icon(onclick="showHide()")
+                +icon('arrow')
+        .filter__items(id="title")
+            if attributes.class === 'color'
+                each item, index in params.items
+                    .filter__item
+                        +item-color(item.name + '-' + (index + 1), item.color)
+            else 
+                each item, index in params.items
+                    .filter__item
+                        +input-checkbox(item.name + '-' + (index + 1), item.label)

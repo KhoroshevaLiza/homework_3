@@ -20,9 +20,15 @@
 
     &__btns {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
 
         .icon-btn {
+            margin-right: 40px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
             &:hover {
                 .icon-favourites {
                     animation-name: heart;

@@ -1,0 +1,20 @@
+.footer-menu {
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+    &__link {
+        display: inline-flex;
+        padding: 4px 15px;
+        font-size: 14px;
+        line-height: 22px;
+        background-color: color('white');
+        border-radius: 2px;
+    }
+}

@@ -1,42 +1,63 @@
 .item-color {
-    &__item {
-        display: inline-block;
-        //padding-bottom: 5px;
-        //padding-right: 5px;
+	display: inline-flex;
+	position: relative;
+	width: 36px;
+	height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+		.item-color {
+			&__icon {
+				opacity: .5;
+				visibility: visible;
+			}
+		}
     }
 
-    .title {
-        font-size: 16px;
-        font-weight: bold;
+    &[style*="#ffffff"] {
+        border: 1px solid color("gray");
+
+        .icon {
+			fill: color("blue");
+		}
     }
 
-    // .circle {
-    //     width: 36px;
-    //     height: 36px;
-    //     border-radius: 60px;
-    // }
+	&__input {
+		position: absolute !important;
+		overflow: hidden !important;
+		clip: rect(0 0 0 0) !important;
+		height: 1px !important;
+		width: 1px !important;
+		margin: -1px !important;
+		padding: 0 !important;
+		border: 0 !important;
+		opacity: 0 !important;
+	}
 
-    &__input {
-        cursor: pointer;
+	&__icon {
+		display: inline-flex;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity $animation-time, visibility $animation-time;
 
-        // &::before {
-        //     content: '';
-        //     box-sizing: border-box;
-        //     transition: border-color $animation-time, background-color $animation-time;
-        // }
-    
-        // &::after {
-        //     content: '';
-        //     position: absolute;
-        //     top: 6px;
-        //     left: 6px;
-        //     width: 10px;
-        //     height: 8px;
-        //     background: url("../images/check.svg") no-repeat;
-        //     opacity: 0;
-        //     visibility: hidden;
-        //     transform: translateY(-6px);
-        //     transition: opacity $animation-time, visibility $animation-time, transform $animation-time;
-        // }
-    }
+		.icon {
+			fill: color("white");
+		}
+	}
+
+	&__input {
+		&:checked {
+			+ .item-color {
+				&__icon {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+	}
 }

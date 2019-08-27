@@ -11,6 +11,10 @@
 		padding-bottom: 15px;
 		margin-right: 70px;
 
+		@include media-breakpoint-down(md) {
+			margin-right: 50px;
+		}
+
 		&:hover {
 			> .menu__link {
 				color: color("blue");
@@ -54,7 +58,8 @@
 		box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
 		background-color: color("white");
 		transform: translateX(-50%);
-		//animation: fadeIn $animation-time;
+		animation: fadeIn $animation-time;
+		z-index: 1;
 	}
 
 	&__sub-item {

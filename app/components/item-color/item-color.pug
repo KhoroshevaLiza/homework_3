@@ -1,44 +1,5 @@
-mixin item-color(arr)
-    nav.item-color
-        .title
-            p Цвет
-        ul.item-color__list
-            if arr
-                each item in arr
-                    li.item-color__item
-                        if item.title === 'Белый'
-                            input.item-color__input(type='checkbox' title=item.title style="border-radius: 18px; border:solid 18px #ffffff")
-                        if item.title === 'Черный'
-                            input.item-color__input(type='checkbox' title=item.title style="border-radius: 18px; border:solid 18px #000000")
-                        if item.title === 'Серый'
-                            input.item-color__input(type='checkbox' title=item.title style="border-radius: 18px; border:solid 18px #5a5a5a")
-                        if item.title === 'Коричневый'
-                            input.item-color__input(type='checkbox' title=item.title style="border-radius: 18px; border:solid 18px #704d35")
-                        if item.title === 'Оранжевый'
-                            input.item-color__input(type='checkbox' title=item.title style="border-radius: 18px; border:solid 18px #e0791d")
-                        if item.title === 'Красный'
-                            input.item-color__input(type='checkbox' title=item.title style="border-radius: 18px; border:solid 18px #ba0606")
-                        if item.title === 'Зеленый'
-                            input.item-color__input(type='checkbox' title=item.title style="border-radius: 18px; border:solid 18px #38a01a")
-                        if item.title === 'Темно-синий'
-                            input.item-color__input(type='checkbox' title=item.title style="border-radius: 18px; border:solid 18px #314976")
-                        if item.title === 'Светло-синий'
-                            input.item-color__input(type='checkbox' title=item.title style="border-radius: 18px; border:solid 18px #3748a6")
-                        //- if item.title === 'Белый'
-                            .circle(style="background:#ffffff; border:solid 1px #9b9b9b")
-                        //-if item.title === 'Черный'
-                            .circle(style="background:#000000")
-                        //-if item.title === 'Серый'
-                            .circle(style="background:#5a5a5a")
-                        //-if item.title === 'Коричневый'
-                            .circle(style="background:#704d35")
-                        //-if item.title === 'Оранжевый'
-                            .circle(style="background:#e0791d")
-                        //-if item.title === 'Красный'
-                            .circle(style="background:#ba0606")
-                        //-if item.title === 'Зеленый'
-                            .circle(style="background:#38a01a")
-                        //-if item.title === 'Темно-синий'
-                            .circle(style="background:#314976")
-                        //-if item.title === 'Светло-синий'
-                            .circle(style="background:#3748a6")
+mixin item-color(name, color)
+    label.item-color(style={ 'background-color': color })
+        input.item-color__input(type='checkbox' name=name)
+        span.item-color__icon
+            +icon('check')

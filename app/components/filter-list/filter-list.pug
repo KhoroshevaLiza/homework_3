@@ -1,0 +1,11 @@
+include ../filter/filter
+
+mixin filter-list(filters)
+    form.filter-list(action="")
+        each filter in filters
+            .filter-list__item
+                +filter(filter)(class=filter.type ? filter.type : '')
+        .filter-list__btns
+            input.btn.btn_primary.btn_block(type='submit' value='Применить')
+            input.btn.btn_clear.btn_block(type='reset' value='Очистить фильтр')
+            

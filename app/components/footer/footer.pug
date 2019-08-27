@@ -1,18 +1,25 @@
+include ../footer-menu/footer-menu
+
 mixin footer()
-    .footer
-        .btn__list
-            button.btn_footer Каталог
-            button.btn_footer Оплата
-            button.btn_footer Доставка
-            button.btn_footer Возврат
-            button.btn_footer Сборка
-            button.btn_footer Помощь
-            button.btn_footer Обратная связь
-        .footer__content
-            .p1 
-                p По любым вопросам обращайтесь:
-            .p2 
-                p +7 499 242-12-54
-        .footer__information
-            p © 2019, Интернет-магазин мебели
+    footer.footer
+        .container
+            .row
+                .col-md-13
+                    .footer__nav
+                        -
+                            var footerNav = [
+                                'Каталог',
+                                'Оплата',
+                                'Доставка',
+                                'Возврат',
+                                'Сборка',
+                                'Помощь',
+                                'Обратная связь'
+                            ]
+                        +footer-menu(footerNav)
+                    .footer__copyright &copy; 2019, Интернет-магазин мебели
+                .col-lg-5.offset-lg-6.col-md-8.offset-md-3
+                    .footer__phone
+                        .footer__phone-text По любым вопросам обращайтесь:
+                        a.footer__phone-link(href='tel:+74992421254' title='+7 499 242-12-54') +7 499 242-12-54
         

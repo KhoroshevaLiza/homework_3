@@ -1,0 +1,6 @@
+mixin footer-menu(items)
+    nav.footer-menu
+        ul.footer-menu__list
+            each item in items
+                li.footer-menu__item
+                    a.footer-menu__link.link(href='#' title=item)= item

@@ -4,13 +4,12 @@ extends ../layouts/default/default
 include ../components/breadcrumbs/breadcrumbs
 include ../components/page-title/page-title
 include ../components/list-card/list-card
-include ../components/input-checkbox/input-checkbox
-include ../components/item-color/item-color
+include ../components/filter-list/filter-list
 
 //- Выводим контент
 block content
     .container
-        .mt-xl-12.mb-xl-3
+        .mt-md-12.mb-md-3
             -
                 var breadcrumbs = [
                     {url: '#', title: 'Главная', value: 'Главная'},
@@ -20,52 +19,48 @@ block content
                 ]
             +breadcrumbs(breadcrumbs)
         +page-title('Диваны')
-        .mt-xl-12
+        .mt-md-12.mb-md-20
             .row
-                .col-xl-5.pt-xl-
+                .col-lg-5.pt-lg-4.col-md-8
                     -
-                        var color = [
-                            {url: '#', title: 'Белый', color: '#ffffff'},
-                            {url: '#', title: 'Черный', color: '#000000'},
-                            {url: '#', title: 'Серый', color: "#5a5a5a"},
-                            {url: '#', title: 'Коричневый', color: "#704d35"},
-                            {url: '#', title: 'Оранжевый', color: "#e0791d"},
-                            {url: '#', title: 'Красный', color: "#ba0606"},
-                            {url: '#', title: 'Зеленый', color: "#38a01a"},
-                            {url: '#', title: 'Темно-синий', color: "#314976"},
-                            {url: '#', title: 'Светло-синий', color: "#3748a6"},
+                        var filters = [
+                            {
+                                title: 'Цвет',
+                                type: 'color',
+                                items: [
+                                    { name: 'filter-color', color: '#ffffff' },
+                                    { name: 'filter-color', color: '#000000' },
+                                    { name: 'filter-color', color: '#5a5a5a' },
+                                    { name: 'filter-color', color: '#704d35' },
+                                    { name: 'filter-color', color: '#e0791d' },
+                                    { name: 'filter-color', color: '#ba0606' },
+                                    { name: 'filter-color', color: '#38a01a' },
+                                    { name: 'filter-color', color: '#314976' },
+                                    { name: 'filter-color', color: '#3748a6' }
+                                ]
+                            },
+                            {
+                                title: 'Материал',
+                                items: [
+                                    { name: 'filter-fabric', label: 'Вельвет' },
+                                    { name: 'filter-fabric', label: 'Микровелюр' },
+                                    { name: 'filter-fabric', label: 'Велюр' },
+                                    { name: 'filter-fabric', label: 'Жаккард' },
+                                    { name: 'filter-fabric', label: 'Замша' },
+                                    { name: 'filter-fabric', label: 'Рогожка' }
+                                ]
+                            },
+                            {
+                                title: 'Угол',
+                                items: [
+                                    { name: 'filter-angle', label: 'Левый' },
+                                    { name: 'filter-angle', label: 'Правый' },
+                                    { name: 'filter-angle', label: 'Универсальный' }
+                                ]
+                            }
                         ]
-                    +item-color(color)
-                    br
-                    p(style="font-weight: bold") Материал
-                    -
-                        var material = [
-                            {name: 'test1', label: 'Вельвет'},
-                            {name: 'test2', label: 'Микровелюр'},
-                            {name: 'test3', label: 'Велюр'},
-                            {name: 'test4', label: 'Жаккард'},
-                            {name: 'test5', label: 'Замша'},
-                            {name: 'test6', label: 'Рогожка'}
-                        ]
-                    +input-checkbox(material)
-                    br
-                    p(style="font-weight: bold") Угол
-                    -
-                        var angle = [
-                            {name: 'test7', label: 'Левый'},
-                            {name: 'test8', label: 'Правый'},
-                            {name: 'test9', label: 'Универсальный'}
-                        ]
-                    +input-checkbox(angle)
-                    //- br
-                    //- button.btn.btn_primary Button
-                    br
-                    input.btn.btn_primary(type='submit' value='Применить')
-                    br
-                    input.btn.btn_reset(type='reset' value='Очистить фильтр')
-                    //- br
-                    //- a.btn.btn_primary(href="#") Button_A
-                .col-xl-18.offset-xl-1
+                    +filter-list(filters)
+                .col-lg-18.offset-lg-1.col-md-16
                         -
                             var cards = [
                                 {href: '#', name: 'Montreal', cost: '10&nbsp;990', img: 'assets/images/item-01.jpg', btns: ['favourites', 'cart']},
